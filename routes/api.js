@@ -28,7 +28,7 @@ router.delete('/songs/:id', async function(req, res, next){
 router.get('/songs/search', async function(req,res){
     s = req.query.name.toLowerCase();
     const song = await Song.find({ "name" : { $regex: s, $options: 'i' } })
-    console.log(song)
+    res.send(song)
 });
 
 module.exports = router;
