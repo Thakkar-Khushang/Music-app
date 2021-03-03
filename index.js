@@ -7,7 +7,11 @@ const mongoose = require('mongoose');
 const app = express();
 
 //connect to MongoDB
+<<<<<<< HEAD
 mongoose.connect('mongodb+srv://starkritter:WO22bEGpsWzLN2dW@cluster0.jzmkj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+=======
+mongoose.connect('mongodb+srv://starkritter:WO22bEGpsWzLN2dW@cluster0.jzmkj.mongodb.net/MusicDB?retryWrites=true&w=majority', {
+>>>>>>> 46158530e7e6aabf9bb18e5cb536cfb005e7b3d6
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
