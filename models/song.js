@@ -8,12 +8,17 @@ const SongSchema = new Schema({
         type:String,
         required:[true,'Name field is required']
     },
-    img_url:{
-        type:String
+    artist: {
+        type:String,
+        required:[true,'Artist name field is required']
     },
-    available:{
-        type: Boolean,
-        default:false
+    img_url:{
+        type:String,
+        required:[true,'Artist name field is required']
+    },
+    song_url:{
+        type:String,
+        required:[true,'Artist name field is required']
     }
 });
 

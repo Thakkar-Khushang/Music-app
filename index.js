@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 //connect to MongoDB
-mongoose.connect('mongodb+srv://starkritter:Thakkarishu@1@cluster0.jzmkj.mongodb.net/MusicDB?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://starkritter:WO22bEGpsWzLN2dW@cluster0.jzmkj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -18,7 +18,7 @@ mongoose.connect('mongodb+srv://starkritter:Thakkarishu@1@cluster0.jzmkj.mongodb
 .catch((err)=>{
     console.error('Error occured connecting to Database. \n${err}');
 })
-//mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 
 app.use(bodyParser.json());
 
