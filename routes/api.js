@@ -10,8 +10,8 @@ router.get('/songs', async function(req, res, next){
 
 router.post('/songs', function(req, res, next){
     Song.create({
-        "name":req.body.name.toLowerCase(),
-        "artist":req.body.artist,
+        "name":req.body.name.toLowerCase().trim(),
+        "artist":req.body.artist.trim(),
         "img_url":req.body.img_url,
         "song_url":req.body.song_url
     }).then(function(song){
