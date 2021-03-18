@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/8d5200af-f8f7-4031-9c29-3a5159bc4063/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/iste-musicapp",
+    "appService.deploySubpath": "."
+}

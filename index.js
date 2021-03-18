@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 //connect to MongoDB
-mongoose.connect(process.env.Database_URL, {
+mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
