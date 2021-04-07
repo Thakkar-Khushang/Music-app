@@ -2,14 +2,14 @@ const express = require('express');
 const Song = require('../models/song');
 const router = express.Router();
 
-router.get('/songs', async function(req, res, next){
+router.get('/songs', async (req, res, next) => {
     const songs = await Song.find({})
     console.log(req.query)
     res.send(songs)
     
 });
 
-router.post('/songs', async function(req, res, next){
+router.post('/songs', async(req, res, next) => {
     song = await Song.create({
         "name":req.body.name.toLowerCase().trim(),
         "artist":req.body.artist.trim(),
@@ -19,17 +19,17 @@ router.post('/songs', async function(req, res, next){
     res.send(song)
 });
 
-router.delete('/songs/:id', async function(req, res, next){
+router.delete('/songs/:id', async(req, res, next) => {
     const song = await Song.findByIdAndRemove({_id:req.params.id}).catch(next);
     res.send(song)
 });
 
-router.get('/songs/:id', async function(req, res, next){
+router.get('/songs/:id', async(req, res, next) => {
     const song = await Song.findById({_id:req.params.id}).catch(next);
     res.send(song)
 });
 
-router.get('/search', async function(req,res){
+router.get('/search', async(req,res) => {
     s = req.query.q.toLowerCase().trim();
     if(s==" ".trim()){
         const songs = await Song.find({})
