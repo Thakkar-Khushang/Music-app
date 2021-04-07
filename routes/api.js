@@ -1,43 +1,43 @@
-const express = require('express');
-const Song = require('../models/song');
-const router = express.Router();
+const express = require('express')
+const Song = require('../models/Song')
 
-router.get('/songs', async (req, res, next) => {
-    const songs = await Song.find({})
-    console.log(req.query)
-    res.send(songs)
-    
-});
+const router = express.Router()
 
-router.post('/songs', async(req, res, next) => {
-    song = await Song.create({
-        "name":req.body.name,
-        "artist":req.body.artist,
-        "img_url":req.body.img_url,
-        "song_url":req.body.song_url
-    })
-    res.send(song)
-});
+router.get('/songs', async (req, res) => {
+  const songs = await Song.find()
+  console.log(req.query)
+  return res.send(songs)
+})
 
-router.delete('/songs/:id', async(req, res, next) => {
-    const song = await Song.findByIdAndRemove({_id:req.params.id}).catch(next);
-    res.send(song)
-});
+router.post('/songs', async (req, res) => {
+  song = await Song.create({
+    name: req.body.name,
+    artist: req.body.artist,
+    img_url: req.body.img_url,
+    song_url: req.body.song_url,
+  })
+  return res.send(song)
+})
 
-router.get('/songs/:id', async(req, res, next) => {
-    const song = await Song.findById({_id:req.params.id}).catch(next);
-    res.send(song)
-});
+router.delete('/songs/:id', async (req, res, next) => {
+  const song = await Song.findByIdAndRemove({ _id: req.params.id }).catch(next)
+  return res.send(song)
+})
 
-router.get('/search', async (req,res) => {
-    s = req.query.q.toLowerCase().trim();
-    if(s==" ".trim()){
-        const songs = await Song.find({})
-        res.send(songs)
-    }else{
-    const song = await Song.find({ "name" : { $regex: s, $options: 'i' } })
-    res.send(song)
-    }
-});
+router.get('/songs/:id', async (req, res, next) => {
+  const song = await Song.findById({ _id: req.params.id }).catch(next)
+  return res.send(song)
+})
 
-module.exports = router;
+router.get('/search', async (req, res) => {
+  s = req.query.q
+  let songs
+  if (s === '') {
+    songs = await Song.find({})
+  } else {
+    songs = await Song.find({ name: { $regex: s, $options: 'i' } })
+  }
+  return res.send(songs)
+})
+
+module.exports = router
