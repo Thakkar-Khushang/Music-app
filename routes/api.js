@@ -1,5 +1,5 @@
 const express = require('express');
-const Song = require('../models/Song');
+const Song = require('../models/song');
 const router = express.Router();
 
 router.get('/songs', async (req, res, next) => {
@@ -11,8 +11,8 @@ router.get('/songs', async (req, res, next) => {
 
 router.post('/songs', async(req, res, next) => {
     song = await Song.create({
-        "name":req.body.name.toLowerCase().trim(),
-        "artist":req.body.artist.trim(),
+        "name":req.body.name,
+        "artist":req.body.artist,
         "img_url":req.body.img_url,
         "song_url":req.body.song_url
     })
@@ -29,7 +29,7 @@ router.get('/songs/:id', async(req, res, next) => {
     res.send(song)
 });
 
-router.get('/search', async(req,res) => {
+router.get('/search', async (req,res) => {
     s = req.query.q.toLowerCase().trim();
     if(s==" ".trim()){
         const songs = await Song.find({})
