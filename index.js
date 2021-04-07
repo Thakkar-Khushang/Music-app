@@ -1,6 +1,8 @@
 require('dotenv').config()
 
 const express = require('express')
+require('express-async-errors')
+
 const cors = require('cors')
 const bodyParser = require('body-parser')
 
@@ -18,7 +20,7 @@ app.use('/', require('./routes/api'))
 
 app.use((err, req, res, next) => {
   console.log('error occured', err)
-  return res.status(500).send({ errors: [err] })
+  return res.status(500).send({ errors: [err.toString()] })
 })
 
 mongoose

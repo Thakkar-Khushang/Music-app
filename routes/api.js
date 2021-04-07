@@ -20,12 +20,12 @@ router.post('/songs', async (req, res) => {
 })
 
 router.delete('/songs/:id', async (req, res, next) => {
-  const song = await Song.findByIdAndRemove({ _id: req.params.id }).catch(next)
+  const song = await Song.findByIdAndRemove({ _id: req.params.id })
   return res.send(song)
 })
 
 router.get('/songs/:id', async (req, res, next) => {
-  const song = await Song.findById({ _id: req.params.id }).catch(next)
+  const song = await Song.findById({ _id: req.params.id })
   return res.send(song)
 })
 
