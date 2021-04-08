@@ -4,23 +4,24 @@ const Song = require('../models/Song')
 const router = express.Router()
 
 router.post('/songs', async (req, res) => {
+  const { name, artist, img_url, song_url } = req.body
   song = await Song.create({
-    name: req.body.name,
-    artist: req.body.artist,
-    img_url: req.body.img_url,
-    song_url: req.body.song_url,
+    name,
+    artist,
+    img_url,
+    song_url,
   })
   return res.send(song)
 })
 
-router.delete('/songs/:id', async (req, res, next) => {
-  const song = await Song.findByIdAndRemove({ _id: req.params.id })
+router.delete('/songs/:id', async (req, res) => {
+  const song = await Song.findByIdAndRemove(req.params.id)
   return res.send(song)
 })
 
-router.get('/songs/:id', async (req, res, next) => {
-  const song = await Song.findById({ _id: req.params.id })
-  return res.send(song)
+router.get('/songs/:id', async (req, res) => {
+  const song = await Song.findById(req.params.id)
+  return res.send(song||"not found")
 })
 
 router.get('/search', async (req, res) => {
