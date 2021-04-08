@@ -3,12 +3,6 @@ const Song = require('../models/Song')
 
 const router = express.Router()
 
-router.get('/songs', async (req, res) => {
-  const songs = await Song.find()
-  console.log(req.query)
-  return res.send(songs)
-})
-
 router.post('/songs', async (req, res) => {
   song = await Song.create({
     name: req.body.name,
